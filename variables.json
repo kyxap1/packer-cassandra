@@ -1,0 +1,19 @@
+{
+  "aws_account_ids": [
+    {
+      "prod": "000000000000",
+      "dev": "1111111111111",
+      "stage": "222222222222"
+    }
+  ],
+  "source_amis": [
+    {
+      "amazon_linux": [
+        {
+          "pv": "ami-4d87fc5a",
+          "hvm": "ami-c481fad3"
+        }
+      ]
+    }
+  ]
+}

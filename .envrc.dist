@@ -1,0 +1,18 @@
+# aws variables
+AWS_ACCOUNT_ID=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=
+AMI_NAME=cassandra
+AMI_NAME_PREFIX=dev
+AMI_BASE_IMAGE=
+AMI_SSH_USERNAME=ec2-user
+AMI_SSH_TIMEOUT=2m
+AMI_BUILDER_INSTANCE_TYPE=m3.large
+APP_NAME=cassandra
+APP_VERSION=3.9
+export "${!AWS_@}"
+export "${!AMI_@}"
+export "${!APP_@}"
+# vim: filetype=sh
+

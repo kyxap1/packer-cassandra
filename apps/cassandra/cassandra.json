@@ -1,0 +1,73 @@
+{
+  "variables": {
+    "ami_name": "{{env `AMI_NAME`}}",
+    "ami_name_prefix": "{{env `AMI_NAME_PREFIX`}}",
+    "ami_base_image": "{{env `AMI_BASE_IMAGE`}}",
+    "ami_ssh_username": "{{env `AMI_SSH_USERNAME`}}",
+    "ami_ssh_timeout": "{{env `AMI_SSH_TIMEOUT`}}",
+    "aws_region": "{{env `AWS_DEFAULT_REGION`}}",
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "app_name": "{{env `APP_NAME`}}",
+    "app_version": "{{env `APP_VERSION`}}",
+    "ami_builder_instance_type": "{{env `AMI_BUILDER_INSTANCE_TYPE`}}",
+  },
+  "builders": [
+    {
+      "ami_users": [],
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `aws_region`}}",
+      "source_ami": "{{user `ami_base_image`}}",
+      "ssh_username": "{{user `ami_ssh_username`}}",
+      "associate_public_ip_address": true,
+      "ssh_private_ip": false,
+      "ssh_pty": true,
+      "ebs_optimized": false,
+      "force_deregister": true,
+      "ssh_timeout": "{{user `ami_ssh_timeout`}}",
+      "instance_type": "{{user `ami_builder_instance_type`}}",
+      "ami_name": "{{user `app_name`}}-{{user `app_version`}}",
+      "ami_block_device_mappings": [
+        {
+          "device_name": "/dev/xvdb",
+          "virtual_name": "ephemeral0"
+        },
+        {
+          "device_name": "/dev/xvdc",
+          "virtual_name": "ephemeral1"
+        }
+      ],
+      "tags": {
+        "Platform": "Amazon Linux",
+        "Release": "2016.09.1",
+        "CreatedAt": "{{isotime \"20060102150405\"}}",
+        "SourceAmi": "{{user `ami_base_image`}}"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo {{user `ssh_username`}} | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+      "inline": [
+        "mkdir -p /opt/scripts",
+        "chmod a+w /opt/scripts"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "files/.",
+      "destination": "/opt/scripts"
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo {{user `ssh_username`}} | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+      "inline": [
+        "bash /opt/scripts/install.sh",
+        "echo PLEASE IMPLEMENT ME! /opt/scripts/ansible.sh"
+      ]
+    }
+  ]
+}
