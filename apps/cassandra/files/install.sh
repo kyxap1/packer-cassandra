@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 #===============================================================================
-#
 #          FILE: install.sh
-#
-#         USAGE: ./install.sh
-#
-#   DESCRIPTION:
-#
 #        AUTHOR: Aleksandr Kukhar (kyxap), kyxap@kyxap.pro
 #       COMPANY: Fasten.com
 #  ORGANIZATION: Operations
