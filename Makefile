@@ -1,7 +1,7 @@
-APP  ?= $(APP_NAME)
-ARGS 	= $1
+ARGS  = $1
 
-CD  ?= [ -d ${PWD}/apps/${APP} ] && cd ${PWD}/apps/${APP}
+APP   ?= $(APP_NAME)
+CD    ?= [ -d ${PWD}/apps/${APP} ] && cd ${PWD}/apps/${APP}
 
 .PHONY: all help install build validate debug
 
