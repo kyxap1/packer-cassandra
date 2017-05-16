@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Packer Templates
 
 ### Pre-requirements
@@ -384,7 +383,7 @@ amazon-ebs output will be in this color.
     amazon-ebs: You should consider upgrading via the 'pip install --upgrade pip' command.
     amazon-ebs: Collecting cassandra-driver
     amazon-ebs: Downloading cassandra-driver-3.7.1.tar.gz (211kB)
-    amazon-ebs:     100% || 212kB 1.2MB/s
+    amazon-ebs:     100% |ÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂÂ| 212kB 1.2MB/s
     amazon-ebs: Requirement already satisfied (use --upgrade to upgrade): six>=1.6 in /usr/lib/python2.7/dist-packages (from cassandra-driver)
     amazon-ebs: Requirement already satisfied (use --upgrade to upgrade): futures in /usr/lib/python2.7/dist-packages (from cassandra-driver)
     amazon-ebs: Installing collected packages: cassandra-driver
@@ -426,4 +425,3 @@ us-east-1: ami-90977b86
 =======
 # packer-cassandra
 Working hard
->>>>>>> 509fb59b04292674700fa279c72a64420d6e880b
